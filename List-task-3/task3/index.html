@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <section
+      style="
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      "
+    >
+      <h2>CADASTRO DE ALUNOS</h2>
+      <form
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+        "
+      >
+        <label>Nome</label>
+        <input type="text" id="name" /> <br />
+        <label>Matricula</label>
+        <input type="text" id="reference" /><br />
+        <label>Nota</label>
+        <input type="text" id="points" /> <br /><br />
+
+        <button
+          type="button"
+          id="cadastro"
+          value="cadastrar"
+          onclick="salvar();"
+        >
+          cadastrado
+        </button>
+        <button type="button" value="listar" onclick="mostrarTodos()">
+          Listar
+        </button>
+        <p id="resultado"></p>
+      </form>
+    </section>
+
+    <script>
+      var agenda = [];
+
+      function salvar() {
+        var name = document.getElementById("name").value;
+        var reference = document.getElementById("reference").value;
+        var points = document.getElementById("points").value;
+
+        var student = {
+          name,
+          reference,
+          points,
+        };
+
+        agenda.push(student);
+        document.getElementById("resultado").innerHTML =
+          name + " cadastrado com sucesso!";
+      }
+
+      function mostrarTodos() {
+        texto = "<table border=1>";
+        texto += "<tr>    <th>Nome</th>    <th>Matricula</th>   <th>Nota</th> ";
+        for (var l = 0; l < agenda.length; l++) {
+          texto += "<tr>";
+          texto +=
+            "<td>" +
+            agenda[l].name +
+            "</td><td>" +
+            agenda[l].reference +
+            "</td><td>" +
+            agenda[l].points +
+            "</td>";
+          texto += "</tr>";
+        }
+        texto += "</table>";
+        document.getElementById("resultado").innerHTML = texto;
+      }
+    </script>
+  </body>
+</html>

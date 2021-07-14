@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <section
+      style="
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      "
+    >
+      <h2>CADASTRO DE ALUNOS</h2>
+      <form
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+        "
+      >
+        <label>Nome</label>
+        <input type="text" id="name" /> <br />
+
+        <button
+          type="button"
+          id="cadastro"
+          value="cadastrar"
+          onclick="salvar();"
+        >
+          adicionar
+        </button>
+        <button type="button" value="listar" onclick="mostrarTodos()">
+          Listar
+        </button>
+        <p id="resultado"></p>
+      </form>
+    </section>
+
+    <script>
+      var nomes = [];
+
+      function salvar() {
+        var name = document.getElementById("name").value;
+
+        nomes.push({ name });
+        document.getElementById("resultado").innerHTML =
+          name + " cadastrado com sucesso!";
+      }
+
+      function mostrarTodos() {
+        let nomeReverse = nomes.reverse();
+
+        console.log(nomes);
+        texto = "<table border=1>";
+        texto += "<tr>    <th>Nomes</th>";
+        for (var i = 0; i < nomeReverse.length; i++) {
+          texto += "<tr>";
+          texto += "<td>" + nomeReverse[i].name + "</td>";
+
+          texto += "</tr>";
+        }
+        texto += "</table>";
+        document.getElementById("resultado").innerHTML = texto;
+      }
+    </script>
+  </body>
+</html>
